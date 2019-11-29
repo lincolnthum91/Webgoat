@@ -34,7 +34,7 @@ public class Login {
 
         ModelAndView model = new ModelAndView();
         if (error != null) {
-            model.addObject("error", "Invalid2 username and password!");
+            model.addObject("error", "Invalid username and password!");
         }
 
         if (logout != null) {
