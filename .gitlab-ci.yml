@@ -1,0 +1,38 @@
+cache:
+    paths:
+        - .
+ 
+build:
+    stage: build
+    image: maven:3.3.9
+    script:
+        - mvn -f pom.xml package
+ 
+.lifecycle-evaluation: &lifecycle-evaluation
+    stage: test
+    image: sonatype/gitlab-nexus-iq-pipeline:1.1
+    script:
+        - /sonatype/evaluate -i WebGoatGitLab .
+ 
+evaluate-build:
+    <<: *lifecycle-evaluation
+    variables:
+        IQ_STAGE: build
+    except:
+        - /^stable-.*$/
+        - tags
+        - master
+ 
+evaluate-staging:
+    <<: *lifecycle-evaluation
+    variables:
+        IQ_STAGE: stage-release
+    only:
+        - master
+ 
+evaluate-release:
+    <<: *lifecycle-evaluation
+    variables:
+        IQ_STAGE: release
+    only:
+        - tags
