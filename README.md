@@ -1,4 +1,4 @@
-# WebGoat: A deliberately insecure Web Application
+# WebGoat: A deliberately insecure Web Application Lincoln Test
 
 [![DepShield Badge](https://depshield.sonatype.org/badges/schaplin-sonatype/ryan_webgoat/depshield.svg)](https://depshield.github.io)
 
