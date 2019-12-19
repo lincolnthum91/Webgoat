@@ -7,7 +7,7 @@ resource "null_resource" "ansible" {
     command = "sleep 10"
   }
   provisioner "local-exec" {
-    command = "cd ansible && ansible-playbook -i hosts playbook.yaml -vvv"
+    command = "sleep 20 && cd ansible && ansible-playbook -i hosts playbook.yaml -vvv"
     interpreter = ["/bin/bash", "-c"]
   }
 }
